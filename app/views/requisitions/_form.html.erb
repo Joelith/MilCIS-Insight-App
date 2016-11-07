@@ -1,0 +1,20 @@
+<%= simple_form_for(@requisition, html: { class: "form-horizontal", role: "form" }) do |f| %>
+  <% if @requisition.errors.any? %>
+    <div class="alert alert-danger alert-dismissable" role="alert">
+      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      <h4><%= pluralize(@requisition.errors.count, "error") %> prohibited this requisition from being saved:</h4>
+
+      <ul>
+      <% @requisition.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :amount %>
+  <%= f.input :status, as: :hidden, input_html: {value: "Pending"} %>
+  <%= f.input :loc, collection: ['Holsworthy', 'Victoria Barracks', 'Angelsea', 'Hampstead'] %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>

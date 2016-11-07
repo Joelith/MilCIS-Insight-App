@@ -1,0 +1,38 @@
+<div class="page-header">
+  <%= link_to new_requisition_path, class: 'btn btn-primary' do %>
+    <span class="glyphicon glyphicon-plus"></span>
+    New Requisition
+  <% end %>
+  <h1>All Requisitions</h1>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th>Location</th>
+            <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= content_tag_for(:tr, @requisitions) do |requisition| %>
+            <td><%= link_to requisition.id, requisition %></td>
+            <td><%= requisition.title %></td>
+            <td><%= number_to_currency(requisition.amount) %></td>
+            <td><%= requisition.status %></td>
+            <td><%= requisition.loc %></td>
+            <td>
+              <div class="btn-group">
+                <%= link_to 'Edit', edit_requisition_path(requisition), class: 'btn btn-primary' %>
+                <%= link_to 'Destroy', requisition, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+              </div>
+            </td>
+      <% end %>
+    </tbody>
+  </table>
+</div>

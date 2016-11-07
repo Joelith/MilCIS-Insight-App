@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sent: 2016-11-06
+  comments: MyText
+  status: MyString
+  requisition: one
+
+two:
+  sent: 2016-11-06
+  comments: MyText
+  status: MyString
+  requisition: two
